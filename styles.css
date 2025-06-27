@@ -1,0 +1,328 @@
+*{ 
+    font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+}
+
+
+header {
+    background-image: url(images/background_header2.png);
+    background-size: cover; /* Asegura que la imagen cubra todo el header */
+    background-position: center; /* Centra la imagen en el header */
+    height: 150px; /* Ajusta la altura del header */
+}
+
+.header {
+    display: flex; /* Usa flexbox para alinear los elementos en una fila */
+    justify-content: space-between; /* Coloca el logo a la izquierda y el nav a la derecha */
+    align-items: center; /* Centra verticalmente los elementos */
+    padding: 0 20px; /* Espaciado interno horizontal */
+    width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+    box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+#Logo_Princ {
+    width: 100px; /* Ajusta el tamaño del logo */
+    height: auto;
+    margin: 0; /* Elimina cualquier margen adicional */
+    border-radius: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Añade una sombra al logo */
+}
+
+nav {
+    margin: 0; /* Elimina cualquier margen adicional */
+}
+
+nav ul {
+    list-style: none; /* Elimina los puntos de la lista */
+    display: flex; /* Coloca los elementos del menú en línea */
+    padding: 0; /* Elimina el padding del ul */
+    margin: 0; /* Elimina el margen del ul */
+}
+
+nav ul li {
+    margin-left: 20px; /* Añade espacio entre los elementos del menú */
+    display: flex; /* Asegura que los enlaces se alineen correctamente */
+    position: relative; /* Necesario si se usa pseudo-elemento para efectos */
+}
+
+nav ul li a:hover {
+    background-color: rgba(0, 0, 0, 0.2); /* Cambia el color de fondo al pasar el ratón */
+    border-radius: 5px; /* Añade bordes redondeados al hover */
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+    transform: scale(1.1); /* Aumenta ligeramente el tamaño del elemento */
+    color: black;
+}
+
+nav ul li a {
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+    color: rgb(83, 83, 83); /* Color del texto */
+    font-weight: bold;
+    padding: 10px 15px; /* Añade espacio interno para que el hover sea más visible */
+    display: block; /* Asegura que el enlace ocupe todo el área del `li` */
+}
+
+
+.contenedor-css{
+    margin-top: 1%;
+}
+
+.comida{
+    width: 800px;
+    height: auto;
+    border-radius: 20px;
+}
+
+.comida:hover{
+    transform: scale(1.05);
+    transition: 1s;
+    padding-bottom: 10px;
+}
+
+#informacion {
+    text-align: center;
+}
+
+.textoNum {
+    padding-left: 502px;
+}
+
+#textoFormulario {
+    padding-left: 300px;
+    padding-top: 50px;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    margin: 50px auto;
+    padding: 80px;
+    background-color: #b21818;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+h1{
+    text-align: center;
+    color: #000000;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 5px;
+    color: #000000;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 4px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox-group label {
+    font-weight: normal;
+}
+
+button {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    color: white;
+    background-color: #000000;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #000000;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.success-message {
+    text-align: center;
+    margin-top: 20px;
+    color: green;
+    font-weight: bold;
+}
+#HamburgonClasico {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#HamburgonCheddar {
+    height: 400px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+#HamburgonBBQ {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#HamburgonVegano {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#HamburgonPollo {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#HamburgonPremium {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 16px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton:hover{
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.40);
+    color :#000000;
+    background: #b21818;
+}
+
+.col:hover{
+    transform: scale(1.03);
+}
+
+body {
+    background-color: #f8f9fa;
+}
+
+.section-title {
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+.icono {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.delivery-box {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.08);
+}
+
+.nosotros-section {
+    padding: 60px 20px;
+}
+
+.nosotros-title {
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.nosotros-img {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.nosotros-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.ubicacion {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.nosotros-title {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2d3748;
+}
+
+.maps {
+    width: 100%;
+    height: 450px;
+    border: none;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+    .location-container {
+        margin: 1rem auto;
+        padding: 1rem;
+        width: 95%;
+
+    .ubicacion {
+        margin: 1rem;
+        padding: 1rem;
+    }
+
+    .nosotros-title {
+        font-size: 1.5rem;
+    }
+
+    .maps {
+        height: 300px; 
+    }
+}
+}

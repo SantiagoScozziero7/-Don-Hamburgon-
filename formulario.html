@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Formulario de Registro</h1>
+        <form id="registroForm">
+            
+
+            <div class="form-group">
+                <label for="nombre">Nombre*</label>
+                <input type="text" id="nombre" name="nombre">
+                <span class="error-message" id="nombre-error"></span>
+            </div>
+            
+
+            <div class="form-group">
+                <label for="apellido">Apellido*</label>
+                <input type="text" id="apellido" name="apellido">
+                <span class="error-message" id="apellido-error"></span>
+            </div>
+            
+            
+
+            <div class="form-group">
+                <label for="email">Correo electrónico*</label>
+                <input type="email" id="email" name="email">
+                <span class="error-message" id="email-error"></span>
+            </div>
+            
+  
+            <div class="form-group">
+                <label for="password">Contraseña*</label>
+                <input type="password" id="password" name="password">
+                <span class="error-message" id="password-error"></span>
+            </div>
+            
+  
+            <div class="form-group">
+                <label>Género*</label>
+                <select id="genero" name="genero">
+                    <option value="">Seleccione...</option>
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+                <span class="error-message" id="genero-error"></span>
+            </div>
+            
+
+            
+
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" id="terminos" name="terminos"> 
+                    Acepto los términos y condiciones*
+                </label>
+                <span class="error-message" id="terminos-error"></span>
+            </div>
+            
+            <button type="submit">Registrarse</button>
+        </form>
+        
+        <div id="success-message" class="success-message"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
