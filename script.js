@@ -103,4 +103,155 @@ document.addEventListener("DOMContentLoaded", ()=>{
             successMessage.textContent = "";
         }
     });
+
+    
+let carrito = [];
+const productos = [
+    {
+        id: 1,
+        nombre: "Hamburguesa 01",
+        precio: 1000,
+        imagen: "images/HamburgonPremium3.avif"
+    },
+    {
+        id: 2,
+        nombre: "Hamburguesa 02",
+        precio: 1000,
+        imagen: "images/HamburgonBBQ.jpeg"
+    }
+];
+
+// Elementos del DOM
+const contenedorCarrito = document.querySelector('.carrito-productos');
+const contenedorTotal = document.querySelector('#total');
+const btnVaciar = document.querySelector('.carrito-acciones-vaciar');
+const btnComprar = document.querySelector('.carrito-acciones-comprar');
+const mensajeVacio = document.querySelector('.carrito-vacio');
+const contadorCarrito = document.querySelector('.numerito');
+
+// Event Listeners
+document.addEventListener('DOMContentLoaded', () => {
+    cargarCarrito();
+    renderizarCarrito();
+});
+
+btnVaciar.addEventListener('click', vaciarCarrito);
+btnComprar.addEventListener('click', comprarCarrito);
+
+// Funciones principales
+function cargarCarrito() {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+    }
+}
+
+function guardarCarrito() {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+}
+
+function renderizarCarrito() {
+    // Limpiar el carrito antes de renderizar
+    contenedorCarrito.innerHTML = '';
+
+    if (carrito.length === 0) {
+        mensajeVacio.style.display = 'block';
+        contenedorTotal.textContent = '$0';
+        contadorCarrito.textContent = '0';
+        return;
+    }
+
+    mensajeVacio.style.display = 'none';
+
+    carrito.forEach(producto => {
+        const div = document.createElement('div');
+        div.classList.add('carrito-producto');
+        div.innerHTML = `
+            <img class="carrito-producto-imagen" src="${producto.imagen}" alt="${producto.nombre}">
+            <div class="carrito-producto-nombre">
+                <small>Título</small>
+                <h3>${producto.nombre}</h3>
+            </div>
+            <div class="carrito-producto-cantidad">
+                <small>Cantidad</small>
+                <p>${producto.cantidad}</p>
+            </div>
+            <div class="carrito-producto-precio">
+                <small>Precio</small>
+                <p>$${producto.precio}</p>
+            </div>
+            <div class="carrito-producto-subtotal">
+                <small>Subtotal</small>
+                <p>$${producto.precio * producto.cantidad}</p>
+            </div>
+            <button class="carrito-producto-eliminar" data-id="${producto.id}">
+                <i class="fa-solid fa-trash"></i>
+            </button>
+        `;
+        contenedorCarrito.appendChild(div);
+    });
+
+    // Agregar event listeners a los botones de eliminar
+    document.querySelectorAll('.carrito-producto-eliminar').forEach(btn => {
+        btn.addEventListener('click', eliminarProducto);
+    });
+
+    actualizarTotal();
+    actualizarContador();
+}
+
+function actualizarTotal() {
+    const total = carrito.reduce((acc, producto) => acc + (producto.precio * producto.cantidad), 0);
+    contenedorTotal.textContent = `$${total}`;
+}
+
+function actualizarContador() {
+    const totalItems = carrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    contadorCarrito.textContent = totalItems;
+}
+
+function agregarAlCarrito(id) {
+    const producto = productos.find(p => p.id === id);
+    const productoEnCarrito = carrito.find(p => p.id === id);
+
+    if (productoEnCarrito) {
+        productoEnCarrito.cantidad++;
+    } else {
+        carrito.push({...producto, cantidad: 1});
+    }
+
+    guardarCarrito();
+    renderizarCarrito();
+}
+
+function eliminarProducto(e) {
+    const id = Number(e.currentTarget.dataset.id);
+    carrito = carrito.filter(producto => producto.id !== id);
+    guardarCarrito();
+    renderizarCarrito();
+}
+
+function vaciarCarrito() {
+    carrito = [];
+    guardarCarrito();
+    renderizarCarrito();
+}
+
+function comprarCarrito() {
+    if (carrito.length === 0) {
+        alert('Tu carrito está vacío');
+        return;
+    }
+
+    // Aquí iría la lógica para procesar la compra
+    alert('¡Compra realizada con éxito!');
+    vaciarCarrito();
+}
+
+// Función para agregar productos desde otra página (ejemplo)
+function agregarProductoDesdeOtraPagina(id) {
+    agregarAlCarrito(id);
+    renderizarCarrito();
+}
+
 });
