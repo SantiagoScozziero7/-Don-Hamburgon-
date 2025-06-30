@@ -1,9 +1,9 @@
 *{ 
     font-family: "Josefin Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-style: normal;
-  padding: 0;
-  margin: 0;
+    font-optical-sizing: auto;
+    font-style: normal;
+    padding: 0;
+    margin: 0;
 }
 
 
@@ -99,7 +99,7 @@ nav ul li a {
     max-width: 500px;
     margin: 50px auto;
     padding: 80px;
-    background-color: #b21818;
+    background-color: #d82525;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
 }
@@ -166,6 +166,8 @@ button:hover {
     color: green;
     font-weight: bold;
 }
+
+/* HAMBURGONES */
 #HamburgonClasico {
     height: 400px;
     width: 100%;
@@ -216,7 +218,7 @@ button:hover {
     margin-bottom: 70px;
 }
 
-/* Sanguches */
+/* SANGUCHONES */
 #SanguchonVacio {
     height: 300px;
     width: 100%;
@@ -290,6 +292,18 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.08);
 }
 
+/* NOSOTROS */
+.ubicacion {
+    max-width: 1200px;
+    width: 100%;
+    margin: 2rem auto;
+    padding: 1rem;
+    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
 .nosotros-section {
     padding: 60px 20px;
 }
@@ -298,6 +312,8 @@ body {
     font-weight: bold;
     text-align: center;
     margin-bottom: 40px;
+    font-size: 2rem;
+    color: #2d3748;
 }
 
 .nosotros-img {
@@ -309,22 +325,6 @@ body {
 .nosotros-text {
     font-size: 1.1rem;
     line-height: 1.6;
-}
-
-.ubicacion {
-    max-width: 1200px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
-
-.nosotros-title {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #2d3748;
 }
 
 .maps {
@@ -340,10 +340,12 @@ body {
         margin: 1rem auto;
         padding: 1rem;
         width: 95%;
+    }
 
     .ubicacion {
-        margin: 1rem;
+        margin: 1rem auto;
         padding: 1rem;
+        width: 100%;
     }
 
     .nosotros-title {
@@ -351,11 +353,11 @@ body {
     }
 
     .maps {
-        height: 300px; 
+        height: 300px;
     }
 }
-}
 
+/* CARRITO */
 /* Título principal */
 .titulo-principal-carrito {
     text-align: center;
