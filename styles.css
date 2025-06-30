@@ -216,6 +216,34 @@ button:hover {
     margin-bottom: 70px;
 }
 
+/* Sanguches */
+#SanguchonVacio {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#SanguchonBondiola {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 30px;
+    margin-bottom: 70px;
+}
+
+#SanguchonMilanesa {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
 .boton {
     display: inline-block;
     padding: 10px 20px;
