@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-    <title>Don Hamburgeson</title>
+    <title>Don Hamburgon</title>
 
     <link rel="stylesheet" href="styles.css"/>
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -57,66 +57,27 @@
 </header>
 
 <main>
-    <H2 class="titulo-principal-carrito">Carrito</H2>
-    <div clas="contenedor-carrito">
+    <h2 class="titulo-principal-carrito">Carrito</h2>
+    <div class="contenedor-carrito">
         <div class="carrito-productos">
-
-            <div class="carrito-producto">
-                <img class="carrito-producto-imagen" src="images/HamburgonPremium3.avif" alt="">
-                <div class="carrito-producto-nombre">
-                    <small>Titulo</small>
-                    <h3>Hmaburguesa 01</h3>
-                </div>
-                <div class="carrito-producto-cantidad">
-                    <small>Cantidad</small>
-                    <p>1</p>
-                </div>
-                <div class="carrito-producto-precio">
-                    <small>Precio</small>
-                    <p>$1000</p>
-                </div>
-                <div class="carrito-producto-subtotal">
-                    <small>Subtotal</small>
-                    <p>$1000</p>
-                </div>
-                <button class="carrito-producto-eliminar"><i class="fa-solid fa-trash"></i></button>
-            </div>
-
-            <div class="carrito-producto">
-                <img class="carrito-producto-imagen" src="images/HamburgonBBQ.jpeg" alt="">
-                <div class="carrito-producto-nombre">
-                    <small>Titulo</small>
-                    <h3>Hmaburguesa 02</h3>
-                </div>
-                <div class="carrito-producto-cantidad">
-                    <small>Cantidad</small>
-                    <p>1</p>
-                </div>
-                <div class="carrito-producto-precio">
-                    <small>Precio</small>
-                    <p>$1000</p>
-                </div>
-                <div class="carrito-producto-subtotal">
-                    <small>Subtotal</small>
-                    <p>$1000</p>
-                </div>
-                <button class="carrito-producto-eliminar"><i class="fa-solid fa-trash"></i></button>
-            </div>
-            
+            <p class="carrito-vacio-mensaje">Tu carrito está vacío. ¡Agrega algunos productos!</p>
         </div>
-        <div class="carrito-acciones"></div>
-        <div class="carrito-acciones-izquierda">
-            <button class="carrito-acciones-vaciar">Vaciar Carrito</button>
-        </div>
-        <div class="carrito-acciones-derecha">
-            <div class="carrito-acciones-total">
-                <p>Total:</p>
-                <p id="total">$3000</p>
+
+        <div class="carrito-acciones hidden"> 
+            <div class="carrito-acciones-izquierda">
+                <button class="carrito-acciones-vaciar">Vaciar Carrito</button>
             </div>
-            <button class="carrito-acciones-comprar">Comprar Ahora</button>
+            <div class="carrito-acciones-derecha">
+                <div class="carrito-acciones-total">
+                    <p>Total:</p>
+                    <p id="total">$0</p>
+                </div>
+                <button class="carrito-acciones-comprar">Comprar Ahora</button>
+            </div>
         </div>
     </div>
 </main>
 
 <script src="script.js"></script>
-<body>
+</body>
+</html>
