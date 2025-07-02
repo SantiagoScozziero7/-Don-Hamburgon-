@@ -93,11 +93,20 @@
                     <span class="numerito">0</span></a
                   >
                 </li>
+                {% if session.get('user_name') %}
                 <li>
-                  <a class="" href="{{ url_for('inicio_sesion') }}"
-                    >Iniciar Sesión</a
+                  <span class="navbar-user"
+                    >¡Hola, {{ session['user_name'] }}!</span
+                  >
+                  <a href="{{ url_for('logout') }}" class="logout-btn"
+                    >Cerrar sesión</a
                   >
                 </li>
+                {% else %}
+                <li>
+                  <a href="{{ url_for('inicio_sesion') }}">Iniciar Sesión</a>
+                </li>
+                {% endif %}
               </ul>
             </div>
           </div>

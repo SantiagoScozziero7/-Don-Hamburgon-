@@ -91,11 +91,20 @@
                     <span class="numerito">0</span></a
                   >
                 </li>
+                {% if session.get('user_name') %}
                 <li>
-                  <a class="" href="{{ url_for('inicio_sesion') }}"
-                    >Iniciar Sesión</a
+                  <span class="navbar-user"
+                    >¡Hola, {{ session['user_name'] }}!</span
+                  >
+                  <a href="{{ url_for('logout') }}" class="logout-btn"
+                    >Cerrar sesión</a
                   >
                 </li>
+                {% else %}
+                <li>
+                  <a href="{{ url_for('inicioSesion') }}">Iniciar Sesión</a>
+                </li>
+                {% endif %}
               </ul>
             </div>
           </div>
@@ -110,17 +119,19 @@
             Tu carrito está vacío. ¡Agrega algunos productos!
           </p>
         </div>
-        <div class="carrito-acciones hidden">
-          <div class="carrito-acciones-izquierda">
-            <button class="carrito-acciones-vaciar">Vaciar Carrito</button>
+        <div class="carrito-acciones">
+          <button class="carrito-acciones-vaciar">Vaciar Carrito</button>
+          <div class="carrito-acciones-total">
+            <span>Total:</span>
+            <span id="total">$0</span>
           </div>
-          <div class="carrito-acciones-derecha">
-            <div class="carrito-acciones-total">
-              <p>Total:</p>
-              <p id="total">$0</p>
-            </div>
-            <button class="carrito-acciones-comprar">Comprar Ahora</button>
-          </div>
+          <button
+            class="carrito-acciones-comprar"
+            id="comprar-ahora-btn"
+            data-fincompra-url="/fincompra"
+          >
+            Comprar Ahora
+          </button>
         </div>
       </div>
     </main>

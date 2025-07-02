@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // --- Lógica de Validación de Formulario (ya existente, con pequeñas mejoras) ---
+  // --- Lógica de Validación de Formulario de Registro ---
   const nombre = document.getElementById("nombre");
   const apellido = document.getElementById("apellido");
   const email = document.getElementById("email");
@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const validateNombre = () => {
-    if (!nombre) return true; // Si el elemento no existe, no validar
+    if (!nombre) return true;
     const value = nombre.value.trim();
     if (value.length < 4) {
       mostrarError(errNombre, "Ingrese un nombre con más de 4 letras");
@@ -98,8 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const successMessage = document.getElementById("success-message");
 
   if (registroForm) {
-    // Solo si el formulario existe en la página actual
-    registroForm.addEventListener("submit", (e) => {
+    registroForm.addEventListener("submit", async function (e) {
       e.preventDefault();
       const isValid =
         validateNombre() &&
@@ -108,11 +107,37 @@ document.addEventListener("DOMContentLoaded", () => {
         validatePassword() &&
         validateGenero() &&
         validateTerminos();
-      if (isValid) {
-        if (successMessage) successMessage.textContent = "Registro exitoso";
-        registroForm.reset();
-      } else {
+
+      if (!isValid) {
         if (successMessage) successMessage.textContent = "";
+        return;
+      }
+
+      // Envío con Fetch API a /api/registros
+      const data = {
+        name: nombre.value,
+        last_name: apellido.value,
+        email: email.value,
+        password: password.value,
+        genero: genero.value,
+      };
+
+      try {
+        const response = await fetch("/api/registros", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+        const result = await response.json();
+        if (response.ok) {
+          successMessage.textContent = "¡Registro exitoso!";
+          registroForm.reset();
+        } else {
+          successMessage.textContent =
+            "Error al registrar: " + (result.error || "Intenta de nuevo");
+        }
+      } catch (error) {
+        successMessage.textContent = "Error de conexión con el servidor.";
       }
     });
   }
@@ -183,8 +208,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const botonVaciar = document.querySelector(".carrito-acciones-vaciar");
   const contenedorTotal = document.getElementById("total");
   const numerito = document.querySelector(".numerito");
-  const carritoVacioMensaje = document.querySelector(".carrito-vacio"); // Nuevo elemento para mensaje de carrito vacío
-  const carritoAcciones = document.querySelector(".carrito-acciones"); // Contenedor de acciones del carrito
+  const carritoVacioMensaje = document.querySelector(".carrito-vacio");
+  const carritoAcciones = document.querySelector(".carrito-acciones");
 
   function actualizarNumerito() {
     const nuevoNumerito = carrito.reduce(
@@ -200,10 +225,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (carrito.length === 0) {
       if (contenedorCarritoProductos)
         contenedorCarritoProductos.innerHTML = `<p class="carrito-vacio-mensaje">Tu carrito está vacío. ¡Agrega algunos productos!</p>`;
-      if (carritoAcciones) carritoAcciones.classList.add("hidden"); // Ocultar acciones si el carrito está vacío
+      if (carritoAcciones) carritoAcciones.classList.add("hidden");
     } else {
       if (contenedorCarritoProductos) {
-        contenedorCarritoProductos.innerHTML = ""; // Limpiar antes de renderizar
+        contenedorCarritoProductos.innerHTML = "";
         carrito.forEach((producto) => {
           const div = document.createElement("div");
           div.classList.add("carrito-producto");
@@ -236,7 +261,7 @@ document.addEventListener("DOMContentLoaded", () => {
           contenedorCarritoProductos.append(div);
         });
       }
-      if (carritoAcciones) carritoAcciones.classList.remove("hidden"); // Mostrar acciones si hay productos
+      if (carritoAcciones) carritoAcciones.classList.remove("hidden");
     }
     actualizarTotal();
     actualizarBotonesEliminar();
@@ -262,7 +287,7 @@ document.addEventListener("DOMContentLoaded", () => {
       }
       localStorage.setItem("productos-en-carrito", JSON.stringify(carrito));
       actualizarNumerito();
-      alert(`"${productoAgregado.nombre}" añadido al carrito.`); // Feedback al usuario
+      alert(`"${productoAgregado.nombre}" añadido al carrito.`);
     }
   }
 
@@ -270,7 +295,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const idBoton = e.currentTarget.id;
     carrito = carrito.filter((producto) => producto.id !== idBoton);
     localStorage.setItem("productos-en-carrito", JSON.stringify(carrito));
-    cargarProductosCarrito(); // Recargar el carrito para reflejar los cambios
+    cargarProductosCarrito();
   }
 
   function vaciarCarrito() {
@@ -316,31 +341,91 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarNumerito();
   }
 
-  //Validacion Inicio de sesión
-  const loginForm = document.querySelector("form");
-  const usernameInput = loginForm.querySelector("input[type='text']");
-  const passwordInput = loginForm.querySelector("input[type='password']");
-  const erroresDiv = loginForm.querySelector(".errores");
+  // --- Comprar Ahora: Redirige a fincompra y guarda el carrito ---
+  const btnComprarAhora = document.getElementById("comprar-ahora-btn");
+  if (btnComprarAhora) {
+    btnComprarAhora.addEventListener("click", function (e) {
+      e.preventDefault();
+      const carrito = localStorage.getItem("productos-en-carrito");
+      sessionStorage.setItem("carrito-para-compra", carrito || "[]");
+      // Usa el atributo data o ruta fija
+      window.location.href =
+        btnComprarAhora.dataset.fincompraUrl || "/fincompra";
+    });
+  }
 
-  loginForm.addEventListener("submit", function (e) {
-    erroresDiv.innerHTML = ""; // Limpiar errores anteriores
-    let errores = [];
+  // --- Manejo del submit SOLO en fincompra.html ---
+  const form = document.getElementById("direccionForm");
+  if (form && window.location.pathname.includes("fincompra")) {
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
 
-    if (usernameInput.value.trim().length < 3) {
-      errores.push("El nombre de usuario debe tener al menos 3 caracteres.");
-    }
+      // Obtén el nombre del usuario desde una variable global de Flask (si está logueado)
+      let nombre = "{{ session.get('user_name', 'Cliente') }}";
+      // Obtén el carrito desde sessionStorage
+      let carrito = [];
+      try {
+        carrito = JSON.parse(
+          sessionStorage.getItem("carrito-para-compra") || "[]"
+        );
+      } catch (e) {}
 
-    if (passwordInput.value.trim().length < 6) {
-      errores.push("La contraseña debe tener al menos 6 caracteres.");
-    }
+      // Genera número de orden aleatorio de 3 dígitos
+      const orden = Math.floor(100 + Math.random() * 900);
 
-    if (errores.length > 0) {
-      e.preventDefault(); // Detener el envío
-      errores.forEach(function (error) {
-        const p = document.createElement("p");
-        p.textContent = error;
-        erroresDiv.appendChild(p);
+      // Redirige al index con los datos en la query string
+      const params = new URLSearchParams({
+        ticket: 1,
+        nombre: nombre,
+        orden: orden,
+        carrito: JSON.stringify(carrito),
       });
-    }
-  });
+      sessionStorage.removeItem("carrito-para-compra");
+      window.location.href = "/?" + params.toString();
+    });
+  }
+
+  // --- Ticket en index ---
+  const params = new URLSearchParams(window.location.search);
+  if (params.get("ticket")) {
+    const nombre = params.get("nombre") || "Cliente";
+    const orden = params.get("orden") || "---";
+    let carrito = [];
+    try {
+      carrito = JSON.parse(params.get("carrito"));
+    } catch (e) {}
+
+    let mensaje = `🧾 TICKET DE PEDIDO\n\n`;
+    mensaje += `Orden #: ${orden}\n\n`;
+    mensaje += `Productos:\n`;
+    carrito.forEach((item) => {
+      mensaje += `- ${item.cantidad} x ${item.nombre}\n`;
+    });
+    mensaje += `\n¡En breve te lo llevamos!`;
+
+    alert(mensaje);
+
+    // Limpia la URL para que no vuelva a mostrar el ticket al recargar
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
+
+  //OLVIDE MI CONTRASEÑA
+  const recordar = document.querySelector(".recordar");
+  if (recordar) {
+    recordar.style.cursor = "pointer";
+    recordar.addEventListener("click", function () {
+      const correo = prompt(
+        "Por favor, ingrese su correo electrónico para reestablecer la contraseña:"
+      );
+      if (correo && correo.includes("@")) {
+        alert(
+          "Se le enviará un correo a " +
+            correo +
+            " para reestablecer su contraseña."
+        );
+      } else if (correo !== null) {
+        alert("Por favor, ingrese un correo electrónico válido.");
+      }
+    });
+  }
 });

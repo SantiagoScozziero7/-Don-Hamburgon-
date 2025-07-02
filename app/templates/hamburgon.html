@@ -48,11 +48,17 @@
                     <li><a class="" aria-current="page" href="{{ url_for('nosotros') }}">Nosotros</a></li>
                     <li><a class="" href="{{ url_for('delivery') }}">Delivery</a></li>
                     <li><a class="boton-carrito" href="{{ url_for('carrito') }}"><i class="fa-solid fa-cart-shopping"></i> <span class="numerito">0</span></a></li>
-                    <li>
-                  <a class="" href="{{ url_for('inicio_sesion') }}"
-                    >Iniciar Sesión</a
-                  >
-                </li>
+                      
+  {% if session.get('user_name') %}
+    <li>
+      <span class="navbar-user">¡Hola, {{ session['user_name'] }}!</span>
+      <a href="{{ url_for('logout') }}" class="logout-btn">Cerrar sesión</a>
+    </li>
+  {% else %}
+    <li>
+      <a href="{{ url_for('inicio_sesion') }}">Iniciar Sesión</a>
+    </li>
+  {% endif %}
                   </ul>
                 </div>
             </div>

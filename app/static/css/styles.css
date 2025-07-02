@@ -35,16 +35,18 @@ nav {
 }
 
 nav ul {
-  list-style: none; /* Elimina los puntos de la lista */
-  display: flex; /* Coloca los elementos del menú en línea */
-  padding: 0; /* Elimina el padding del ul */
-  margin: 0; /* Elimina el margen del ul */
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* Espacio entre los elementos */
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 nav ul li {
-  margin-left: 20px; /* Añade espacio entre los elementos del menú */
-  display: flex; /* Asegura que los enlaces se alineen correctamente */
-  position: relative; /* Necesario si se usa pseudo-elemento para efectos */
+  display: flex;
+  align-items: center;
+  gap: 0.5rem; /* Espacio entre saludo y botón */
 }
 
 nav ul li a:hover {
@@ -168,7 +170,7 @@ button:hover {
 }
 
 .error-message {
-  color: red;
+  color: rgb(0, 0, 0);
   font-size: 14px;
   margin-top: 5px;
 }
@@ -453,47 +455,64 @@ body {
 
 .carrito-acciones {
   display: flex;
-  justify-content: space-between;
-  margin-top: 30px;
-  flex-wrap: wrap;
-  gap: 20px;
+  align-items: stretch;
+  gap: 1.5rem;
+  margin-top: 2rem;
 }
 
 .carrito-acciones-izquierda,
 .carrito-acciones-derecha {
+  display: flex;
+  align-items: stretch;
   flex: 1;
-  min-width: 250px;
+  gap: 20px;
 }
 
-/* Botones */
+.carrito-acciones-izquierda {
+  justify-content: flex-start;
+}
+
+.carrito-acciones-derecha {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  min-width: 300px;
+}
+
 .carrito-acciones-vaciar,
 .carrito-acciones-comprar {
-  padding: 10px 20px;
+  flex: 1 1 0;
+  padding: 1em 0;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
+  border-radius: 16px;
+  font-size: 1.2rem;
   font-weight: bold;
-  font-size: 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .carrito-acciones-vaciar {
-  background-color: #e53935;
-  color: white;
+  background: #e53935;
+  color: #fff;
 }
 
 .carrito-acciones-comprar {
-  background-color: #43a047;
-  color: white;
+  background: #43a047;
+  color: #fff;
 }
 
-/* Total */
 .carrito-acciones-total {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin: 0 1.5rem;
+  white-space: nowrap;
+  min-width: 120px;
+  justify-content: center;
 }
 
 /* Responsive */
@@ -580,6 +599,12 @@ form .username {
   color: #b21818;
 }
 
+.username input:not(:placeholder-shown) ~ label,
+.username input:focus ~ label {
+  top: -5px;
+  color: #b21818;
+}
+
 .username input:focus ~ span::before {
   width: 100%;
 }
@@ -635,4 +660,27 @@ input[type="submit"]:hover {
 
 .errores p {
   margin: 5px 0;
+}
+
+.navbar-user {
+  font-weight: bold;
+  color: #222;
+}
+
+.logout-btn {
+  background: #b21818;
+  color: #fff;
+  padding: 0.3em 1em;
+  border-radius: 20px;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: background 0.2s;
+  margin-left: 0.2em;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logout-btn:hover {
+  background: #d32f2f;
+  color: #fff;
 }
