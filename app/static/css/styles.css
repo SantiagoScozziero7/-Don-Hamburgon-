@@ -1,0 +1,638 @@
+* {
+  font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  padding: 0;
+  margin: 0;
+}
+
+header {
+  background-image: url(../images/background_header2.png);
+  background-size: cover; /* Asegura que la imagen cubra todo el header */
+  background-position: center; /* Centra la imagen en el header */
+  height: 150px; /* Ajusta la altura del header */
+}
+
+.header {
+  display: flex; /* Usa flexbox para alinear los elementos en una fila */
+  justify-content: space-between; /* Coloca el logo a la izquierda y el nav a la derecha */
+  align-items: center; /* Centra verticalmente los elementos */
+  padding: 0 20px; /* Espaciado interno horizontal */
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  box-sizing: border-box; /* Incluye el padding en el ancho total */
+}
+
+#Logo_Princ {
+  width: 100px; /* Ajusta el tamaño del logo */
+  height: auto;
+  margin: 0; /* Elimina cualquier margen adicional */
+  border-radius: 100%;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Añade una sombra al logo */
+}
+
+nav {
+  margin: 0; /* Elimina cualquier margen adicional */
+}
+
+nav ul {
+  list-style: none; /* Elimina los puntos de la lista */
+  display: flex; /* Coloca los elementos del menú en línea */
+  padding: 0; /* Elimina el padding del ul */
+  margin: 0; /* Elimina el margen del ul */
+}
+
+nav ul li {
+  margin-left: 20px; /* Añade espacio entre los elementos del menú */
+  display: flex; /* Asegura que los enlaces se alineen correctamente */
+  position: relative; /* Necesario si se usa pseudo-elemento para efectos */
+}
+
+nav ul li a:hover {
+  background-color: rgba(
+    0,
+    0,
+    0,
+    0.2
+  ); /* Cambia el color de fondo al pasar el ratón */
+  border-radius: 5px; /* Añade bordes redondeados al hover */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Transición suave */
+  transform: scale(1.1); /* Aumenta ligeramente el tamaño del elemento */
+  color: black;
+}
+
+nav ul li a {
+  text-decoration: none; /* Elimina el subrayado de los enlaces */
+  color: rgb(83, 83, 83); /* Color del texto */
+  font-weight: bold;
+  padding: 10px 15px; /* Añade espacio interno para que el hover sea más visible */
+  display: block; /* Asegura que el enlace ocupe todo el área del `li` */
+}
+
+.contenedor-css {
+  margin-top: 1%;
+}
+
+.comida {
+  width: 800px;
+  height: auto;
+  border-radius: 20px;
+}
+
+.comida:hover {
+  transform: scale(1.05);
+  transition: 1s;
+  padding-bottom: 10px;
+}
+
+#informacion {
+  text-align: center;
+}
+
+.textoNum {
+  padding-left: 502px;
+}
+
+#textoFormulario {
+  padding-left: 300px;
+  padding-top: 50px;
+}
+
+.container {
+  width: 100%;
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 80px;
+  background-color: #d82525;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.container-menu {
+  width: 100%;
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 40px 20px;
+  background-color: #d82525;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+h1 {
+  text-align: center;
+  color: #000000;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 5px;
+  color: #000000;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #000000;
+  border-radius: 4px;
+}
+
+.checkbox-group {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-group label {
+  font-weight: normal;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 16px;
+  color: white;
+  background-color: #000000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #000000;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.success-message {
+  text-align: center;
+  margin-top: 20px;
+  color: green;
+  font-weight: bold;
+}
+
+/* HAMBURGONES */
+#HamburgonClasico {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#HamburgonCheddar {
+  height: 400px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+#HamburgonBBQ {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+#HamburgonVegano {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+#HamburgonPollo {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+#HamburgonPremium {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+/* SANGUCHONES */
+#SanguchonVacio {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+#SanguchonBondiola {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 30px;
+  margin-bottom: 70px;
+}
+
+#SanguchonMilanesa {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+.boton-agregar {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton-agregar:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+  color: #000000;
+  background: #b21818;
+}
+
+.col:hover {
+  transform: scale(1.03);
+  transition: 1s;
+}
+
+body {
+  background-color: #f8f9fa;
+}
+
+.section-title {
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: bold;
+}
+
+.icono {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.delivery-box {
+  background-color: white;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+}
+
+/* NOSOTROS */
+.ubicacion {
+  max-width: 1200px;
+  width: 100%;
+  margin: 2rem auto;
+  padding: 1rem;
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.nosotros-section {
+  padding: 60px 20px;
+}
+
+.nosotros-title {
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 2rem;
+  color: #2d3748;
+}
+
+.nosotros-img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+.nosotros-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.maps {
+  width: 100%;
+  height: 450px;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 768px) {
+  .location-container {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 95%;
+  }
+
+  .ubicacion {
+    margin: 1rem auto;
+    padding: 1rem;
+    width: 100%;
+  }
+
+  .nosotros-title {
+    font-size: 1.5rem;
+  }
+
+  .maps {
+    height: 300px;
+  }
+}
+
+/* CARRITO */
+/* Título principal */
+.titulo-principal-carrito {
+  text-align: center;
+  font-size: 2rem;
+  margin: 20px 0;
+  color: #e53935;
+}
+
+/* Contenedor del carrito */
+.contenedor-carrito {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Lista de productos */
+.carrito-productos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Producto individual */
+.carrito-producto {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff3f3;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ffd4d4;
+}
+
+.carrito-producto-imagen {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* Detalles del producto */
+.carrito-producto {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto auto;
+  align-items: center;
+  gap: 15px;
+  background-color: #fff3f3;
+  padding: 15px;
+  border-radius: 10px;
+  border: 1px solid #ffd4d4;
+  overflow-x: auto;
+}
+
+.carrito-producto-nombre h3,
+.carrito-producto-cantidad p,
+.carrito-producto-precio p,
+.carrito-producto-subtotal p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+/* Botón eliminar */
+.carrito-producto-eliminar {
+  background: none;
+  border: none;
+  color: #d32f2f;
+  font-size: 1.5rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.carrito-producto-eliminar:hover {
+  transform: scale(1.2);
+}
+
+/* Acciones */
+
+.carrito-acciones {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.carrito-acciones-izquierda,
+.carrito-acciones-derecha {
+  flex: 1;
+  min-width: 250px;
+}
+
+/* Botones */
+.carrito-acciones-vaciar,
+.carrito-acciones-comprar {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.carrito-acciones-vaciar {
+  background-color: #e53935;
+  color: white;
+}
+
+.carrito-acciones-comprar {
+  background-color: #43a047;
+  color: white;
+}
+
+/* Total */
+.carrito-acciones-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .carrito-producto {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .carrito-producto > div {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .carrito-acciones {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* INICIO DE SESION */
+.inicioformulario {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 400px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.inicioformulario h1 {
+  text-align: center;
+  padding: 20px 0 20px 0;
+  border-bottom: 1px solid silver;
+}
+
+.inicioformulario form {
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+form .username {
+  position: relative;
+  border-bottom: 2px solid #adadad;
+  margin: 30px 0;
+}
+
+.username input {
+  width: 100%;
+  padding: 0 5px;
+  height: 40px;
+  font-size: 16px;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+.username label {
+  position: absolute;
+  top: 50%;
+  left: 5px;
+  color: #adadad;
+  transform: translateY(-50%);
+  font-size: 16px;
+  pointer-events: none;
+  transition: 0.5s;
+}
+
+.username span::before {
+  content: "";
+  position: absolute;
+  top: 40px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #b21818;
+  transition: 0.5s;
+}
+
+.username input:focus ~ label {
+  top: -5px;
+  color: #b21818;
+}
+
+.username input:focus ~ span::before {
+  width: 100%;
+}
+
+.recordar {
+  margin: -5px 0 20px 5px;
+  color: blue;
+  cursor: pointer;
+}
+
+.recordar:hover {
+  text-decoration: underline;
+}
+
+input[type="submit"] {
+  width: 100%;
+  height: 50px;
+  border: 1px solid;
+  background: #d82525;
+  border-radius: 25px;
+  font-size: 18px;
+  color: white;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type="submit"]:hover {
+  border-color: black;
+  transition: 0.5s;
+}
+
+.registrarse {
+  margin: 30px 0;
+  text-align: center;
+  font-size: 16px;
+  color: black;
+}
+
+.registrarse a {
+  color: blue;
+  text-decoration: none;
+}
+
+.registrarse a:hover {
+  text-decoration: underline;
+}
+
+.errores {
+  color: red;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.errores p {
+  margin: 5px 0;
+}
