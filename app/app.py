@@ -188,6 +188,11 @@ def fincompra():
     return render_template('fincompra.html')
 
 
+@app.route('/admin/usuarios')
+def admin_usuarios():
+    return render_template('admin_usuarios.html')
+
+
 @app.route('/logout')
 def logout():
     session.clear()

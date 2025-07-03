@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Administrar Usuarios</title>
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        padding: 5px;
+      }
+      th {
+        background: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Usuarios registrados</h1>
+    <table id="tabla-usuarios">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Email</th>
+          <th>Género</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <!-- Modal simple para editar -->
+    <div
+      id="modal-editar"
+      style="
+        display: none;
+        position: fixed;
+        top: 20%;
+        left: 40%;
+        background: #fff;
+        border: 1px solid #000;
+        padding: 20px;
+      "
+    >
+      <h3>Editar usuario</h3>
+      <form id="form-editar">
+        <input type="hidden" id="edit-id" />
+        <label>Nombre: <input type="text" id="edit-nombre" /></label><br />
+        <label>Apellido: <input type="text" id="edit-apellido" /></label><br />
+        <label>Email: <input type="email" id="edit-email" /></label><br />
+        <label>Género: <input type="text" id="edit-genero" /></label><br />
+        <button type="submit">Guardar</button>
+        <button
+          type="button"
+          onclick="document.getElementById('modal-editar').style.display='none'"
+        >
+          Cancelar
+        </button>
+      </form>
+    </div>
+
+    <script>
+      // Cargar usuarios
+      function cargarUsuarios() {
+        fetch("/api/registros")
+          .then((r) => r.json())
+          .then((usuarios) => {
+            const tbody = document.querySelector("#tabla-usuarios tbody");
+            tbody.innerHTML = "";
+            usuarios.forEach((u) => {
+              tbody.innerHTML += `
+                  <tr>
+                    <td>${u[0]}</td>
+                    <td>${u[1]}</td>
+                    <td>${u[2]}</td>
+                    <td>${u[3]}</td>
+                    <td>${u[5]}</td>
+                    <td>
+                      <button onclick="editarUsuario(${u[0]}, '${u[1]}', '${u[2]}', '${u[3]}', '${u[5]}')">Editar</button>
+                      <button onclick="eliminarUsuario(${u[0]})">Eliminar</button>
+                    </td>
+                  </tr>
+                `;
+            });
+          });
+      }
+
+      // Eliminar usuario
+      function eliminarUsuario(id) {
+        if (confirm("¿Seguro que deseas eliminar este usuario?")) {
+          fetch("/api/registros", {
+            method: "DELETE",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ id }),
+          })
+            .then((r) => r.json())
+            .then(() => cargarUsuarios());
+        }
+      }
+
+      // Mostrar modal de edición
+      function editarUsuario(id, nombre, apellido, email, genero) {
+        document.getElementById("edit-id").value = id;
+        document.getElementById("edit-nombre").value = nombre;
+        document.getElementById("edit-apellido").value = apellido;
+        document.getElementById("edit-email").value = email;
+        document.getElementById("edit-genero").value = genero;
+        document.getElementById("modal-editar").style.display = "block";
+      }
+
+      // Guardar cambios de edición
+      document.getElementById("form-editar").onsubmit = function (e) {
+        e.preventDefault();
+        const id = document.getElementById("edit-id").value;
+        const email = document.getElementById("edit-email").value;
+        // Puedes agregar más campos si tu API lo permite
+        fetch("/api/registros", {
+          method: "PUT",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            id,
+            email,
+            // Agrega aquí otros campos si tu API los acepta
+          }),
+        })
+          .then((r) => r.json())
+          .then(() => {
+            document.getElementById("modal-editar").style.display = "none";
+            cargarUsuarios();
+          });
+      };
+
+      // Inicializar
+      cargarUsuarios();
+    </script>
+  </body>
+</html>

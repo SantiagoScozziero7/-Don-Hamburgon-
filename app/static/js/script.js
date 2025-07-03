@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      // Envío con Fetch API a /api/registros
+      // ---Envío con Fetch API a /api/registros---
       const data = {
         name: nombre.value,
         last_name: apellido.value,
